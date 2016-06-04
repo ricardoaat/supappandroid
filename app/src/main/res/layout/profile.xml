@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/callapi"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="301dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Here will be shown the ticket"
+        android:id="@+id/textView2"
+        android:layout_gravity="start|center_vertical" />
+
+    <EditText
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/eTticketId"
+        android:layout_gravity="start|top" />
+
+</FrameLayout>
