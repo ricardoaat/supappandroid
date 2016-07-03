@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.brosoft.supapp.model.Ticket;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -18,6 +21,9 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Calendar;
+import java.util.TimeZone;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -75,16 +81,19 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 prgDialog.hide();
-                try {
                     // JSON Object
-                    JSONObject obj = new JSONObject(new String(responseBody));
-                    textField.setText(obj.getString("subject"));
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    Toast.makeText(parentView.getContext(), "Error Occured [Server's JSON response might be invalid]!", Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
-
-                }
+                    //Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").create();
+                    Gson gson = new Gson();
+                    Ticket newTicket = gson.fromJson(new String(responseBody), Ticket.class );
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(newTicket.getCreationdate());
+                    String convertedTicket = newTicket.getTicketid()+" "
+                            +newTicket.getSubject()+" Hora: "
+                            +cal.get(Calendar.HOUR_OF_DAY)+"\n MIN: "
+                            +cal.get(Calendar.MINUTE)+"\n"
+                            +cal.getTime()
+                            +new String(responseBody);
+                    textField.setText(convertedTicket);
             }
 
             @Override

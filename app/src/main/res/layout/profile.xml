@@ -18,7 +18,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Here will be shown the ticket"
         android:id="@+id/textView2"
-        android:layout_gravity="start|center_vertical" />
+        android:layout_gravity="start|center_vertical"
+        android:textSize="9dp"
+        android:textIsSelectable="true" />
 
     <EditText
         android:layout_width="106dp"
