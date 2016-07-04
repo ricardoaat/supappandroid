@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
+
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
@@ -19,10 +21,13 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     private ResideMenuItem itemCalendar;
     private ResideMenuItem itemSettings;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         mContext = this;
         setUpMenu();
         if( savedInstanceState == null )
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     }
 
     private void setUpMenu() {
+
 
         // attach to current activity;
         resideMenu = new ResideMenu(this);

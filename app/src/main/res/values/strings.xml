@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Supapp</string>
     <string name="callapi">Call API</string>
+    <string name="facebook_app_id">302197000125192</string>
 </resources>
